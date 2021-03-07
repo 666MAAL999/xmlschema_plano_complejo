@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<curso cod_curso="C114"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="ejemplocomplejo.xsd">
+    <datos_curso>
+        <nombre_curso>Jose</nombre_curso>
+        <alumnos_minimos>10</alumnos_minimos>
+        <duracion>100</duracion>
+        <fecha_inicio>2011-10-10</fecha_inicio>
+        <fecha_fin>2011-10-10</fecha_fin>
+    </datos_curso>
+    <datos_profesor cod_profesor="P007" tutor="NO" >
+        <nombre_profesor>Sinuhe</nombre_profesor>
+        <horas_impartidas>4</horas_impartidas>
+        <salario>1500</salario>
+        <antigüedad>4</antigüedad>
+    </datos_profesor>
+</curso>

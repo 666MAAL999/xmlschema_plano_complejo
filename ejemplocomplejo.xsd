@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           elementFormDefault="qualified">
+
+<!-- definición de elementos de tipo simple-->
+    <xs:element name="nombre_curso">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+            <xs:whiteSpace value="preserve"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="alumnos_minimos">
+        <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="10"/>
+            <xs:maxInclusive value="30"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="duracion">
+        <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="100"/>
+            <xs:maxInclusive value="200"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="fecha_inicio" type="xs:date">
+    </xs:element>
+    <xs:element name="fecha_fin" type="xs:date">
+    </xs:element>
+    <xs:element name="nombre_profesor">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+            <xs:whiteSpace value="preserve"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="horas_impartidas">
+        <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="40"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="salario">
+        <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1000"/>
+            <xs:maxInclusive value="2000"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="antigüedad">
+        <xs:simpleType>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="50"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+<!-- definición de atributos --> 
+    <xs:attribute name="cod_curso">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="C[0-9][0-9][0-9]"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="cod_profesor">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="P[0-9]{3}"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="tutor">
+        <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="SI|NO"/>
+        </xs:restriction>
+        </xs:simpleType>
+    </xs:attribute>
+
+<!-- definición de elementos de tipo complejo -->
+    <xs:element name="datos_curso">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="nombre_curso"/>
+                <xs:element ref="alumnos_minimos"/>
+                <xs:element ref="duracion"/>
+                <xs:element ref="fecha_inicio"/>
+                <xs:element ref="fecha_fin"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="datos_profesor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nombre_profesor"/>
+                <xs:element ref="horas_impartidas"/>
+                <xs:element ref="salario"/>
+                <xs:element ref="antigüedad"/>
+            </xs:sequence>
+            <xs:attribute ref="cod_profesor"/>
+            <xs:attribute ref="tutor"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="curso">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="datos_curso"/>
+                <xs:element ref="datos_profesor"/>
+            </xs:sequence>
+            <xs:attribute ref="cod_curso"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
